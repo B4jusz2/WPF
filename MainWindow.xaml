@@ -1,0 +1,107 @@
+<Window x:Class="Macska.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Macskaprojekt"
+        Height="700" Width="1200"
+        WindowStartupLocation="CenterScreen">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Macskák, fajták és származási adatok"
+                   FontSize="24"
+                   FontWeight="Bold"
+                   HorizontalAlignment="Center"
+                   Margin="0,0,0,10"/>
+
+        <TabControl Grid.Row="1">
+            <TabItem Header="Macskák">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="dgMacskak"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Azonosító" Binding="{Binding CatId}" Width="80"/>
+                            <DataGridTextColumn Header="Név" Binding="{Binding Name}" Width="120"/>
+                            <DataGridTextColumn Header="Kor" Binding="{Binding Age}" Width="80"/>
+                            <DataGridTextColumn Header="Nem" Binding="{Binding Gender}" Width="100"/>
+                            <DataGridTextColumn Header="FajtaId" Binding="{Binding BreedId}" Width="100"/>
+                            <DataGridTextColumn Header="Fajta" Binding="{Binding Fajta.BreedName}" Width="180"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <Button Content="Új macska" Width="120" Margin="5" Click="BtnUjMacska_Click"/>
+                        <Button Content="Macska módosítása" Width="150" Margin="5" Click="BtnMacskaMod_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Fajták">
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    
+                    <DataGrid x:Name="dgFajtak"
+                  Grid.Column="0"
+                  AutoGenerateColumns="False"
+                  IsReadOnly="True"
+                  CanUserAddRows="False"
+                  SelectionChanged="dgFajtak_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Azonosító" Binding="{Binding BreedId}" Width="80"/>
+                            <DataGridTextColumn Header="Fajtanév" Binding="{Binding BreedName}" Width="150"/>
+                            <DataGridTextColumn Header="Átlag súly" Binding="{Binding AvWeight}" Width="100"/>
+                            <DataGridTextColumn Header="Élettartam" Binding="{Binding LifeSpan}" Width="100"/>
+                            <DataGridTextColumn Header="Szőr hossz" Binding="{Binding FurLenght}" Width="100"/>
+                            <DataGridTextColumn Header="Személyiség" Binding="{Binding Personality}" Width="140"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                   
+                    <Border Grid.Column="1" Margin="10" BorderBrush="Gray" BorderThickness="1">
+                        <Image x:Name="imgFajta"
+                   Stretch="Uniform"/>
+                    </Border>
+                </Grid>
+            </TabItem>
+
+            <TabItem Header="Származás">
+                <Grid Margin="10">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+
+                    <DataGrid x:Name="dgSzarmazas"
+                              AutoGenerateColumns="False"
+                              IsReadOnly="True"
+                              CanUserAddRows="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Azonosító" Binding="{Binding CountryId}" Width="100"/>
+                            <DataGridTextColumn Header="Ország" Binding="{Binding CountryName}" Width="200"/>
+                            <DataGridTextColumn Header="Kontinens" Binding="{Binding Continent}" Width="180"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <Button Content="Új származás" Width="120" Margin="5" Click="BtnUjSzarmazas_Click"/>
+                        <Button Content="Származás módosítása" Width="170" Margin="5" Click="BtnSzarmazasMod_Click"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
