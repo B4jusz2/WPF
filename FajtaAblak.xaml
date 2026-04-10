@@ -1,0 +1,62 @@
+<Window x:Class="Macska.FajtaAblak"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Fajta adatai" Height="520" Width="450"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="NoResize">
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid Margin="15">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="130"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <TextBlock Text="Azonosító:" Grid.Row="0" Margin="0,5"/>
+            <TextBox x:Name="txtBreedId" Grid.Row="0" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Fajtanév:" Grid.Row="1" Margin="0,5"/>
+            <TextBox x:Name="txtBreedName" Grid.Row="1" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Átlag súly:" Grid.Row="2" Margin="0,5"/>
+            <TextBox x:Name="txtAvWeight" Grid.Row="2" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Élettartam:" Grid.Row="3" Margin="0,5"/>
+            <TextBox x:Name="txtLifeSpan" Grid.Row="3" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Leírás:" Grid.Row="4" Margin="0,5"/>
+            <TextBox x:Name="txtDescription" Grid.Row="4" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Szőr hossz:" Grid.Row="5" Margin="0,5"/>
+            <TextBox x:Name="txtFurLenght" Grid.Row="5" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Személyiség:" Grid.Row="6" Margin="0,5"/>
+            <TextBox x:Name="txtPersonality" Grid.Row="6" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Kép útvonal:" Grid.Row="7" Margin="0,5"/>
+            <TextBox x:Name="txtImgPath" Grid.Row="7" Grid.Column="1" Margin="0,5"/>
+
+            <TextBlock Text="Ország:" Grid.Row="8" Margin="0,5"/>
+            <ComboBox x:Name="cbCountry"
+                      Grid.Row="8" Grid.Column="1" Margin="0,5"
+                      DisplayMemberPath="CountryName"
+                      SelectedValuePath="CountryId"/>
+
+            <StackPanel Grid.Row="9" Grid.ColumnSpan="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,15,0,0">
+                <Button Content="Mentés" Width="100" Margin="5" Click="BtnMentes_Click"/>
+                <Button Content="Mégse" Width="100" Margin="5" Click="BtnMegse_Click"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Window>
